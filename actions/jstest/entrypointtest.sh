@@ -73,7 +73,6 @@ else
     cd bisweb
     pwd
     echo "--- Starting configuration"
-    npm install -g mocha gulp rimraf
     echo "::set-output name=result::${BASE}"
     exit
     ${BASE}/biswebconfig.sh

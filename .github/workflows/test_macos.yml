@@ -4,6 +4,8 @@ jobs:
     runs-on: ubuntu-18.04
     name: JS tests for bisweb
     steps:
+    - name: Configure
+      run: npm install -g gulp mocha rimraf
     - name: Run
       id: run      
       uses: bioimagesuiteweb/experiments/actions/jstest@master
