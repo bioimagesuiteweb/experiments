@@ -1,6 +1,6 @@
 # test.yml
 name: 'Push YML'
-description: 'Run push echo job and quick regression test in bisweb'
+description: 'Regression test'
 outputs:
     result: # id of output
       description: 'The abbreviated results file'

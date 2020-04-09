@@ -1,10 +1,10 @@
 on: [push]
 jobs:
   hello_world_job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     name: A job to perform regression tests for bisweb
     steps:
-    - name: Test on push
+    - name: Run
       id: run      
       uses: bioimagesuiteweb/experiments/actions/push@master
       env:
