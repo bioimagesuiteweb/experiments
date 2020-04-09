@@ -13,13 +13,14 @@ cat<<TF
 
 TF
 echo "----------------------------------------------------------"
-echo "+++ New push into devel, running quick test"
+echo "+++ New push, running quick test"
 echo "----------------------------------------------------------"   
 
 BASE=/basedir
 
 if [ -d  /hostfiles ]; then
     BASE=/hostfiles/biswebcontainer
+fi
 
 FIRST=10
 LAST=12
@@ -71,4 +72,5 @@ LOG="${LOG//'%'/'%25'}"
 LOG="${LOG//$'\n'/'%0A'}"
 LOG="${LOG//$'\r'/'%0D'}"
 echo "::set-output name=logfile::$LOG"
+
 
