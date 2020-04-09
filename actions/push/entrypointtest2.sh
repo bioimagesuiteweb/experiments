@@ -22,6 +22,17 @@ if [ -d  /hostfiles ]; then
     BASE=/hostfiles/biswebcontainer
 fi
 
+mkdir ${BASE}
+echo "+++ Creating base directory inside the container in ${BASE}"
+cd ${BASE}
+
+export PATH=/usr/local/bin:${PATH}
+cd ${BASE}
+mkdir -p bisweb
+cd bisweb
+/usr/local/bin/biswebconfig.sh
+
+# ------------------------------------------------------
 FIRST=10
 LAST=12
 BDIR=${BASE}/bisweb/src/build
