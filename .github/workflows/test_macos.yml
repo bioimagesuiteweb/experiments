@@ -13,7 +13,7 @@ jobs:
     - name: clone2
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git pull
     - name: Global Prereqs
-      run: sudo npm install -g gulp mocha rimraf; python3 python3-pip python3-setuptools
+      run: sudo npm install -g gulp mocha rimraf; sudo python3 python3-pip python3-setuptools
     - name : Local Prereqs 1
       run: cd /tmp/bisweb/src; npm install -d
     - name : Local Prereqs 2
