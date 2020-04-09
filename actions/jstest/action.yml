@@ -1,0 +1,12 @@
+# test.yml
+name: 'JS Action'
+description: 'JS Regression test'
+outputs:
+    result: # id of output
+      description: 'The abbreviated results file'
+    logfile: # id of output
+      description: 'The complete log file'
+runs:
+    using: 'node10'
+    main: 'index.js'
+  

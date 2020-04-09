@@ -32,25 +32,35 @@ sleep 2
 
 
 # ------------------------------------------------------
-BASE=/basedir
+BASE = $1
 
+if  [ -z ${BASE}]; then
+    BASE=/basedir
 
-if [ -d  /hostfiles ]; then
-    # Running in persisent container, no need to build
-    BASE=/hostfiles/biswebcontainer
+    if [ -d  /hostfiles ]; then
+        # Running in persisent container, no need to build
+        BASE=/hostfiles/biswebcontainer
+    else
+        # New container configure everything
+        mkdir ${BASE}
+        echo "+++ Creating base directory inside the container in ${BASE}"
+        cd ${BASE}
+
+        export PATH=/usr/local/bin:${PATH}
+        cd ${BASE}
+        mkdir -p bisweb
+        cd bisweb
+        /usr/local/bin/biswebconfig.sh
+    fi
 else
-    # New container configure everything
-    mkdir ${BASE}
+    mkdir -p ${BASE}
     echo "+++ Creating base directory inside the container in ${BASE}"
-    cd ${BASE}
-
-    export PATH=/usr/local/bin:${PATH}
     cd ${BASE}
     mkdir -p bisweb
     cd bisweb
-    /usr/local/bin/biswebconfig.sh
+    chmod +x ${BASE}/biswebconfig.sh
+    ${BASE}/biswebconfig.sh
 fi
-
 
 BDIR=${BASE}/bisweb/src/build
 LOGFILE=${BDIR}/logjs.txt

@@ -10,5 +10,5 @@
         "rimraf": "2.6.2",
         "unzip": "0.1.11"
     },
-    "main" : "index.js"
+    "main": "index.js"
 }

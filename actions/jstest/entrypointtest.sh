@@ -12,45 +12,72 @@ cat<<TF
  #####      #     ####   #    #  ######  #####
 
 TF
-# Defaults basically all tests
-FIRST=${BIS_FIRST_TEST}
-LAST=${BIS_LAST_TEST}
+echo "----------------------------------------------------------"
+BASE=$1
+FIRST=$2
+LAST=$3
 
-if [ -z ${BIS_FIRST_TEST} ]; then
-    FIRST=1
+echo "BASE=${BASE}, FIRST=${FIRST} LAST=${LAST}"
+sleep 1
+
+# Defaults basically all tests
+
+if [ -z ${FIRST} ]; then
+    if [ -z ${BIS_FIRST_TEST} ]; then
+        FIRST=1
+    else 
+        FIRST=${BIS_FIRST_TEST}
+    fi
 fi
 
-if [ -z ${BIS_LAST_TEST} ]; then
-    LAST=10000
+if [ -z ${LAST} ]; then
+    if [ -z ${BIS_LAST_TEST} ]; then
+        LAST=10000
+    else 
+        LAST=${BIS_LAST_TEST}
+    fi
 fi
 
 echo "----------------------------------------------------------"
 echo "+++ Running regression tests ${FIRST}:${LAST} (Inputs were ${BIS_FIRST_TEST}:${BIS_LAST_TEST})"
 echo "----------------------------------------------------------"   
 echo ""
-sleep 2
-
+sleep 1
 
 # ------------------------------------------------------
-BASE=/basedir
 
 
-if [ -d  /hostfiles ]; then
-    # Running in persisent container, no need to build
-    BASE=/hostfiles/biswebcontainer
+if  [ -z ${BASE} ]; then
+    BASE=/basedir
+    
+    if [ -d  /hostfiles ]; then
+        # Running in persisent container, no need to build
+        BASE=/hostfiles/biswebcontainer
+    else
+        # New container configure everything
+        mkdir ${BASE}
+        echo "+++ Creating base directory inside the container in ${BASE}"
+        cd ${BASE}
+
+        export PATH=/usr/local/bin:${PATH}
+        cd ${BASE}
+        mkdir -p bisweb
+        cd bisweb
+        /usr/local/bin/biswebconfig.sh
+    fi
 else
-    # New container configure everything
-    mkdir ${BASE}
+    echo "+++ Using BASE=${BASE}"
     echo "+++ Creating base directory inside the container in ${BASE}"
-    cd ${BASE}
-
-    export PATH=/usr/local/bin:${PATH}
     cd ${BASE}
     mkdir -p bisweb
     cd bisweb
-    /usr/local/bin/biswebconfig.sh
+    pwd
+    echo "--- Starting configuration"
+    npm install -g mocha gulp rimraf
+    echo "::set-output name=result::${BASE}"
+    exit
+    ${BASE}/biswebconfig.sh
 fi
-
 
 BDIR=${BASE}/bisweb/src/build
 LOGFILE=${BDIR}/logjs.txt
