@@ -4,16 +4,20 @@ jobs:
     runs-on: ubuntu-18.04
     name: JS tests for bisweb
     steps:
-    - name: Mkdir
-      run: mkdir -p /tmp/bisweb/src ; mkdir -p /tmp/bisweb/gpl; 
-    - name: clone
-      run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/bisweb src; cd src; git checkout devel; git pull
-    - name: clone_fix
-      run: cd /tmp/bisweb/src; cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
+    - name: Clone
+      run: |
+        mkdir -p /tmp/bisweb/src
+        mkdir -p /tmp/bisweb/gpl; 
+        cd /tmp/bisweb
+        git clone https://github.com/bioimagesuiteweb/bisweb src
+        cd src
+        git checkout devel
+        git pull
+        cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
     - name: clone2
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git pull
     - name: Global Prereqs
-      run: sudo npm install -g gulp mocha rimraf; sudo python3 python3-pip python3-setuptools
+      run: sudo npm install -g gulp mocha rimraf; sudo python3 -m pip python3-setuptools
     - name : Local Prereqs 1
       run: cd /tmp/bisweb/src; npm install -d
     - name : Local Prereqs 2
