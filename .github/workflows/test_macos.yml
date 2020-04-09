@@ -31,6 +31,7 @@ jobs:
         tail -6 biswebpython/config/requirements.txt > biswebpython/config/requirements2.txt
         python3 -m pip install --user -r biswebpython/config/requirements2.txt
     - name : JS Prereqs
+      run: |
         cd /tmp/bisweb/src
         npm install -d
         node config/createbuild.js
