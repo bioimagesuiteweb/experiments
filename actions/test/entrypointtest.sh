@@ -75,7 +75,6 @@ ctest -I ${FIRST},${LAST} -V | tee  -a  ${LOGFILE2}
 echo "----------------------------------------------------------"   | tee -a ${LOGFILE2}
 
 cd ${BDIR}
-rm ${RESULTFILE}
 
 echo "------------------------------------" 
 echo "--- Postprocessing Result"
