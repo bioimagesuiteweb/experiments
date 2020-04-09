@@ -7,6 +7,6 @@ outputs:
     logfile: # id of output
       description: 'The complete log file'
 runs:
-    using: 'node10'
+    using: 'node12'
     main: 'index.js'
   
