@@ -12,10 +12,26 @@ cat<<TF
  #####      #     ####   #    #  ######  #####
 
 TF
-echo "----------------------------------------------------------"
-echo "+++ New push, running quick test"
-echo "----------------------------------------------------------"   
+# Defaults basically all tests
+FIRST=${BIS_FIRST_TEST}
+LAST=${BIS_LAST_TEST}
 
+if [ -z ${BIS_FIRST_TEST} ]; then
+    FIRST=1
+fi
+
+if [ -z ${BIS_LAST_TEST} ]; then
+    LAST=10000
+fi
+
+echo "----------------------------------------------------------"
+echo "+++ Running regression tests ${FIRST}:${LAST} (Inputs were ${BIS_FIRST_TEST}:${BIS_LAST_TEST})"
+echo "----------------------------------------------------------"   
+echo ""
+sleep 2
+
+
+# ------------------------------------------------------
 BASE=/basedir
 
 
@@ -35,9 +51,7 @@ else
     /usr/local/bin/biswebconfig.sh
 fi
 
-# ------------------------------------------------------
-FIRST=10
-LAST=12
+
 BDIR=${BASE}/bisweb/src/build
 LOGFILE=${BDIR}/logjs.txt
 LOGFILE2=${BDIR}/logpy.txt
