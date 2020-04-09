@@ -9,9 +9,11 @@ jobs:
     - name: clone
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/bisweb src; cd src; git checkout devel; git pull
     - name: clone2
-      run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git checkout devel; git pull
+      run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git pull
     - name: Global Prereqs
       run: sudo npm install -g gulp mocha rimraf
+    - name : Local Prereqs
+      run: cd /tmp/bisweb/src; npm install -d; node config/createbuild.js; python3 -m pip install --user -r biswebpython/config/requirements.txt
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
