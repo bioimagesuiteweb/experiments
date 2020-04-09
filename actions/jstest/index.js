@@ -2,7 +2,6 @@
 
 const path=require('path');
 const util=require('./bis_createutil');
-const rimraf=require('rimraf');
 
 if (path.sep==='\\') {
     console.log('++++ BioImageSuite Web create developer environment \n++++');
@@ -15,7 +14,6 @@ const main=async function() {
     const MYDIR='/tmp/biswebcontainer';
 
     console.log("------------------------------------------------------------------------------------");
-    rimraf.sync(MYDIR);
     util.makeDir(MYDIR);
     util.copyFileSync(__dirname,'entrypointtest.sh',MYDIR,'entrypointtest.sh');
     util.copyFileSync(__dirname,'biswebconfig_unix.sh',MYDIR,'biswebconfig.sh');

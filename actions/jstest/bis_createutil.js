@@ -1,7 +1,6 @@
 const fs=require('fs');
 const path=require('path');
 const child_process=require('child_process');
-const unzip=require('unzip');
 const rimraf=require('rimraf');
 
 const makeDir=function(f1,exit=true) {
@@ -136,46 +135,6 @@ const copyFileSync2=function(d1,fname,t1,t2) {
     }
 };
 
-let initialize=function(DIR,exit=true) {
-
-    const WASMDIR= path.normalize(path.join(DIR,path.join('..',path.join('various','wasm'))));
-    
-    makeDir(DIR,exit);
-    makeDir(path.join(DIR,'web'),exit);
-    makeDir(path.join(DIR,'wasm'),exit);
-    makeDir(path.join(DIR,'dist'),exit);
-    makeDir(path.join(DIR,'native'),exit);
-    console.log('++++');
-    
-    copyFileSync2(WASMDIR,`libbiswasm_wasm.js`,DIR,`web`);
-    copyFileSync2(WASMDIR,`libbiswasm_nongpl_wasm.js`,DIR,`web`);
-    copyFileSync2(WASMDIR,`libbiswasm.js`,DIR,`wasm`);
-    copyFileSync2(WASMDIR,`libbiswasm_nongpl.js`,DIR,`wasm`);
-    copyFileSync2(WASMDIR,`libbiswasm.wasm`,DIR,`wasm`);
-    copyFileSync2(WASMDIR,`libbiswasm_nongpl.wasm`,DIR,`wasm`);
-    copyFileSync2(WASMDIR,`libbiswasm_wrapper.js`,DIR,`wasm`);
-    copyFileSync2(WASMDIR,`biswasmdate.js`,DIR,`wasm`);
-};
-
-let unzipf=function(zipfile,outdir) {
-
-    console.log('++++ unzipping',zipfile,'in',outdir);
-    
-    return new Promise( (resolve,reject) => {
-        fs.createReadStream(zipfile).
-            pipe(unzip.Extract({ path: outdir })).
-            on('close' , () => {
-                console.log('++++ done unzip ',zipfile);
-                resolve();
-            }).
-            on('error', (e) => {
-                console.log('++++ error unzip ',zipfile);
-                reject(e);
-            });
-    });
-};
-              
-
 
 
 module.exports = {
@@ -183,6 +142,4 @@ module.exports = {
     copyFileSync : copyFileSync,
     linkFileSync : linkFileSync,
     executeCommand : executeCommand,
-    unzip : unzipf,
-    initialize : initialize,
 };
