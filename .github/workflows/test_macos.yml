@@ -4,6 +4,11 @@ jobs:
     runs-on: ubuntu-18.04
     name: JS tests for bisweb
     steps:
+    - name: Global Prereqs
+      run: |
+        sudo npm install -g gulp mocha rimraf
+        sudo python3 -m pip install --upgrade pip
+        sudo python3 -m pip install numpy nibabel
     - name: Clone
       run: |
         mkdir -p /tmp/bisweb/src
@@ -20,11 +25,6 @@ jobs:
         git clone https://github.com/bioimagesuiteweb/gplcppcode gpl
         cd gpl
         git pull
-    - name: Global Prereqs
-      run: |
-        sudo npm install -g gulp mocha rimraf
-        sidp python3 -m pip install --upgrade pip
-        sudo python3 -m pip install numpy nibabel
     - name : Local Prereqs 1
       run: |
         cd /tmp/bisweb/src
