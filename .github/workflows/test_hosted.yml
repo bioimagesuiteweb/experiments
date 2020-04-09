@@ -1,8 +1,10 @@
 on: [push]
 jobs:
   js_build:
-    runs-on: [ macos-10.15, ubuntu-18.04 ]
-    name: JS tests for bisweb
+    runs-on:
+        - macos-10.15
+        - ubuntu-18.04 
+    name: Hosted tests for bisweb
 
     steps:
     - name: Global Prereqs
