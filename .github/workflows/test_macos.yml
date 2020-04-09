@@ -45,9 +45,14 @@ jobs:
         echo "-------------------------------------------------"
         bash /tmp/bisweb/src/compiletools/fullbuild.sh
         cd /tmp/bisweb/src
-    - name : tests
-      run : |
-        bash /tmp/bisweb/docker/dockeractiontest.sh /tmp 10 12
+    - name : Test
+      id: run    
+      outputs:
+        result: # id of output
+          description: 'The abbreviated results file'
+        logfile: # id of output
+          description: 'The complete log file'  
+      run : bash /tmp/bisweb/docker/dockeractiontest.sh /tmp 10 12
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
