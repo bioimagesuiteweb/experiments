@@ -18,7 +18,7 @@ jobs:
         git checkout devel
         git pull
         cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
-    - name: clone2
+    - name: Clone Plugin
       run: |
         cd /tmp/bisweb
         mkdir -p /tmp/bisweb/gpl
@@ -28,7 +28,6 @@ jobs:
     - name : Python Prereqs
       run: |
         cd /tmp/bisweb/src
-        tail -6 biswebpython/config/requirements.txt > biswebpython/config/requirements2.txt
         python3 -m pip install --user -r biswebpython/config/requirements.txt
     - name : JS Prereqs
       run: |
@@ -46,7 +45,12 @@ jobs:
         echo "-------------------------------------------------"
         bash /tmp/bisweb/src/compiletools/fullbuild.sh
         cd /tmp/bisweb/src
-
+    - name : tests
+      run :
+        cd /tmp/bisweb
+        cp /tmp/bisweb/docker/dockeractiontest.sh dockeractiontest.sh
+        chmod +x dockeractiontest.sh
+        bash ./dockeractiontest.sh /tmp 10 12
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
