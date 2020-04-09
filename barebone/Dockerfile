@@ -15,6 +15,7 @@ RUN apt-get install -yq nodejs
 RUN pip3 install --upgrade pip
 
 # dotbashrc and entrypoint file
+RUN apt-get install -yqq dos2unix
 COPY bash.bashrc /etc/bash.bashrc
 RUN dos2unix /etc/bash.bashrc
 
