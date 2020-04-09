@@ -46,11 +46,8 @@ jobs:
         bash /tmp/bisweb/src/compiletools/fullbuild.sh
         cd /tmp/bisweb/src
     - name : tests
-      run :
-        cd /tmp/bisweb
-        cp /tmp/bisweb/docker/dockeractiontest.sh dockeractiontest.sh
-        chmod +x dockeractiontest.sh
-        bash ./dockeractiontest.sh /tmp 10 12
+      run : |
+        bash /tmp/bisweb/docker/dockeractiontest.sh /tmp 10 12
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
