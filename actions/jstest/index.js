@@ -12,13 +12,15 @@ if (path.sep==='\\') {
 const main=async function() {
 
     const MYDIR='/tmp/biswebcontainer';
-
     console.log("------------------------------------------------------------------------------------");
     util.makeDir(MYDIR);
     util.copyFileSync(__dirname,'entrypointtest.sh',MYDIR,'entrypointtest.sh');
     util.copyFileSync(__dirname,'biswebconfig_unix.sh',MYDIR,'biswebconfig.sh');
     await util.executeCommand(`chmod +x ${MYDIR}/*`,MYDIR);
+    console.log("------------------------------------------------------------------------------------");
     await util.executeCommand(`bash ${MYDIR}/entrypointtest.sh ${MYDIR} 12 14`,MYDIR);
+    console.log("------------------------------------------------------------------------------------");
+    
 }
 
 main().then( () => {
