@@ -4,14 +4,14 @@ jobs:
     runs-on: ubuntu-18.04
     name: JS tests for bisweb
     steps:
-    - name: Configure
-      run: sudo npm install -g gulp mocha rimraf
     - name: Mkdir
-      run: mkdir -p/tmp/bisweb/src ; mkdir /tmp/bisweb/gpl; 
+      run: mkdir -p /tmp/bisweb/src ; mkdir -p /tmp/bisweb/gpl; 
     - name: clone
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/bisweb src; cd src; git checkout devel; git pull
     - name: clone2
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git checkout devel; git pull
+    - name: Global Prereqs
+      run: sudo npm install -g gulp mocha rimraf
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
