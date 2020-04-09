@@ -109,13 +109,9 @@ const executeCommand=function(command,dir,force=false,dummy=false) {
 
 const main=async function() {
 
-    const MYDIR='/tmp/biswebcontainer';
+    const MYDIR='/tmp';
     console.log("------------------------------------------------------------------------------------");
-    makeDir(MYDIR);
     copyFileSync(__dirname,'entrypointtest.sh',MYDIR,'entrypointtest.sh');
-    copyFileSync(__dirname,'biswebconfig_unix.sh',MYDIR,'biswebconfig.sh');
-    await executeCommand(`chmod +x ${MYDIR}\/*`,MYDIR);
-    console.log("------------------------------------------------------------------------------------");
     await executeCommand(`bash ${MYDIR}/entrypointtest.sh ${MYDIR} 12 14`,MYDIR);
     console.log("------------------------------------------------------------------------------------");   
 }

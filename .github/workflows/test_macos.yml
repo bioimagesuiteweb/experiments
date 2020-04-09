@@ -25,12 +25,15 @@ jobs:
         git clone https://github.com/bioimagesuiteweb/gplcppcode gpl
         cd gpl
         git pull
-    - name : Local Prereqs 1
+    - name : Python Prereqs
       run: |
+        cd /tmp/bisweb/src
+        tail -6 biswebpython/config/requirements.txt > biswebpython/config/requirements2.txt
+        python3 -m pip install --user -r biswebpython/config/requirements2.txt
+    - name : JS Prereqs
         cd /tmp/bisweb/src
         npm install -d
         node config/createbuild.js
-        python3 -m pip install --user -r biswebpython/config/requirements.txt
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile

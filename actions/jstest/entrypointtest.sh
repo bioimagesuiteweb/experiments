@@ -67,20 +67,7 @@ if  [ -z ${BASE} ]; then
     fi
 else
     echo "+++ Using BASE=${BASE}"
-    echo "+++ Creating base directory inside the container in ${BASE}"
-    cd ${BASE}
-    mkdir -p bisweb
-    cd bisweb
-    pwd
-    echo "--- Starting configuration"
-    echo "::set-output name=result::${BASE}"
-    
-    echo "------------------------------------"
-    echo "Base Done"
-    echo "------------------------------------"
-    ${BASE}/biswebconfig.sh
 fi
-
 
 BDIR=${BASE}/bisweb/src/build
 LOGFILE=${BDIR}/logjs.txt
