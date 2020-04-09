@@ -3,6 +3,12 @@ jobs:
   js_build:
     runs-on: ubuntu-18.04
     name: JS tests for bisweb
+    id: run    
+    outputs:
+      result: # id of output
+        description: 'The abbreviated results file'
+      logfile: # id of output
+        description: 'The complete log file'
     steps:
     - name: Global Prereqs
       run: |
@@ -46,12 +52,6 @@ jobs:
         bash /tmp/bisweb/src/compiletools/fullbuild.sh
         cd /tmp/bisweb/src
     - name : Test
-      id: run    
-      outputs:
-        result: # id of output
-          description: 'The abbreviated results file'
-        logfile: # id of output
-          description: 'The complete log file'  
       run : bash /tmp/bisweb/docker/dockeractiontest.sh /tmp 10 12
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
