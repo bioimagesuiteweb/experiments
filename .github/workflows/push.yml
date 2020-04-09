@@ -6,7 +6,7 @@ jobs:
     steps:
     - name: Test on push
       id: run
-      uses: bioimagesuiteweb/experiments/actions/push@devel
+      uses: bioimagesuiteweb/experiments/actions/push@master
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
