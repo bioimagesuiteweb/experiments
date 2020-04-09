@@ -74,9 +74,13 @@ else
     pwd
     echo "--- Starting configuration"
     echo "::set-output name=result::${BASE}"
-    exit
+    
+    echo "------------------------------------"
+    echo "Base Done"
+    echo "------------------------------------"
     ${BASE}/biswebconfig.sh
 fi
+
 
 BDIR=${BASE}/bisweb/src/build
 LOGFILE=${BDIR}/logjs.txt
