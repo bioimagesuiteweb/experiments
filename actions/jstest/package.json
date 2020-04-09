@@ -1,0 +1,14 @@
+{
+    "private": false,
+    "name": "biswebtestjs",
+    "version": "1.0.0",
+    "description": "Running Regression Tests for BISWEB using docker action js environment",
+    "author": "Xenios Papademetris",
+    "homepage": "https://github.com/bioimagesuiteweb/bisweb",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "rimraf": "2.6.2",
+        "unzip": "0.1.11"
+    },
+    "main" : "index.js"
+}
