@@ -9,7 +9,7 @@ jobs:
     - name: clone
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/bisweb src; cd src; git checkout devel; git pull
     - name: clone_fix
-      run: cd /tmp/bisweb; cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
+      run: cd /tmp/bisweb/src; cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
     - name: clone2
       run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git pull
     - name: Global Prereqs
