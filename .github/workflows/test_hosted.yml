@@ -1,11 +1,11 @@
 on: [push]
 jobs:
-  js_build:
-    runs-on:
-        - macos-10.15
-        - ubuntu-18.04 
+  hosted_build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04]
     name: Hosted tests for bisweb
-
     steps:
     - name: Global Prereqs
       run: |
