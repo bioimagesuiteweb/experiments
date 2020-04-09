@@ -2,11 +2,11 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to echo on each push
+    name: A job to perform regression tests for bisweb
     steps:
-    - name: Echo (on each push)
+    - name: Test on push
       id: run
-      uses: bioimagesuiteweb/bisweb/actions/push@devel
+      uses: bioimagesuiteweb/experiments/actions/push@devel
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
