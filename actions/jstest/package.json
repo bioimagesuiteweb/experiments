@@ -6,5 +6,5 @@
     "author": "Xenios Papademetris",
     "homepage": "https://github.com/bioimagesuiteweb/bisweb",
     "license": "Apache-2.0",
-    "main": "index.js"
+    "main": "main.js"
 }

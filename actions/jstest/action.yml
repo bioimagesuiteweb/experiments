@@ -8,5 +8,5 @@ outputs:
       description: 'The complete log file'
 runs:
     using: 'node12'
-    main: 'index.js'
+    main: 'main.js'
   
