@@ -49,11 +49,6 @@ jobs:
     - name : Test
       run : bash /tmp/bisweb/docker/dockeractiontest.sh /tmp 10 12
       id: run    
-      outputs:
-        result: # id of output
-          description: 'The abbreviated results file'
-        logfile: # id of output
-          description: 'The complete log file'
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
