@@ -1,7 +1,6 @@
 const fs=require('fs');
 const path=require('path');
 const child_process=require('child_process');
-const rimraf=require('rimraf');
 
 const makeDir=function(f1,exit=true) {
     console.log('++++ creating directory',f1);
@@ -28,26 +27,6 @@ const copyFileSync=function(d1,fname,d2,fname2) {
     console.log('++++ copying file  '+f1+'\n\t\t--> '+f2);
     try {
         fs.copyFileSync(f1,f2);
-    } catch(e) {
-        console.log('---- error',e);
-        process.exit(0);
-    }
-};
-
-const linkFileSync=function(d1,fname,d2,fname2) {
-    
-    let f1=path.join(d1,fname);
-    let f2=path.join(d2,fname2);
-
-    try  {
-        rimraf.sync(f2);
-    } catch(e) {
-        console.log(e);
-    }
-    
-    console.log('++++ symlink file  '+f1+'\n\t\t--> '+f2);
-    try {
-        fs.symlinkSync(f1,f2);
     } catch(e) {
         console.log('---- error',e);
         process.exit(0);
@@ -140,6 +119,5 @@ const copyFileSync2=function(d1,fname,t1,t2) {
 module.exports = {
     makeDir : makeDir,
     copyFileSync : copyFileSync,
-    linkFileSync : linkFileSync,
     executeCommand : executeCommand,
 };
