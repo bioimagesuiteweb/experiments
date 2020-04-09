@@ -7,7 +7,6 @@ jobs:
     - name: Clone
       run: |
         mkdir -p /tmp/bisweb/src
-        mkdir -p /tmp/bisweb/gpl; 
         cd /tmp/bisweb
         git clone https://github.com/bioimagesuiteweb/bisweb src
         cd src
@@ -15,15 +14,23 @@ jobs:
         git pull
         cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
     - name: clone2
-      run: cd /tmp/bisweb; git clone https://github.com/bioimagesuiteweb/gplcppcode gpl; cd gpl; git pull
+      run: |
+        cd /tmp/bisweb
+        mkdir -p /tmp/bisweb/gpl
+        git clone https://github.com/bioimagesuiteweb/gplcppcode gpl
+        cd gpl
+        git pull
     - name: Global Prereqs
-      run: sudo npm install -g gulp mocha rimraf; sudo python3 -m pip python3-setuptools
+      run: |
+        sudo npm install -g gulp mocha rimraf
+        sidp python3 -m pip install --upgrade pip
+        sudo python3 -m pip install numpy nibabel
     - name : Local Prereqs 1
-      run: cd /tmp/bisweb/src; npm install -d
-    - name : Local Prereqs 2
-      run: cd /tmp/bisweb/src; node config/createbuild.js
-    - name : Local Prereqs 3
-      run: cd /tmp/bisweb/src;  python3 -m pip install --user -r biswebpython/config/requirements.txt
+      run: |
+        cd /tmp/bisweb/src
+        npm install -d
+        node config/createbuild.js
+        python3 -m pip install --user -r biswebpython/config/requirements.txt
     - name: Results
       run: echo "${{ steps.run.outputs.result}}"
     - name: Logfile
