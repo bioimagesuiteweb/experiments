@@ -12,4 +12,7 @@ jobs:
       run: |
         export BISWEBOS=`uname`
         echo $BISWEBOS
-        ls /
+        echo "Home"
+        ls -R /home
+        echo "Users"
+        ls -R /Users
