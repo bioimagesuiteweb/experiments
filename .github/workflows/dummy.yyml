@@ -12,8 +12,4 @@ jobs:
       run: |
         export BISWEBOS=`uname`
         echo $BISWEBOS
-        if  [  ${BISWEBOS} == "Darwin" ] ; then
-            sudo npm install -g appdmg --unsafe-perm=true --allow-root 
-        fi   
-        sudo npm install -g gulp mocha rimraf --unsafe-perm=true --allow-root
-        
+        ls /
