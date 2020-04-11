@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  hosted_build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-18.04]
+    name: bisweb-test
+    steps:
+    - name: Global Prereqs
+      run: |
+        export BISWEBOS=`uname`
+        echo $BISWEBOS
+        cd /
+        ls -l
+        
