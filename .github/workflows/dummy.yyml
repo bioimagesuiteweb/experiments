@@ -5,14 +5,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ macos-latest, ubuntu-18.04]
+        os: [ ubuntu-18.04]
     name: bisweb-test
     steps:
     - name: Global 
       run: |
         export BISWEBOS=`uname`
         echo $BISWEBOS
+        ls -R /
         echo "Home"
         ls -R /home
-        echo "Users"
-        ls -R /Users
