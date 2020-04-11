@@ -1,16 +1,19 @@
 on: [push]
 
 jobs:
-  hello_world:
+  hosted_build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ macos-latest, ubuntu-18.04]
-    name: search
+    name: bisweb-test
     steps:
-    - name: Begin
+    - name: Global 
       run: |
         export BISWEBOS=`uname`
         echo $BISWEBOS
-        cd /
-        ls -l
+        if  [  ${BISWEBOS} == "Darwin" ] ; then
+            sudo npm install -g appdmg --unsafe-perm=true --allow-root 
+        fi   
+        sudo npm install -g gulp mocha rimraf --unsafe-perm=true --allow-root
+        
