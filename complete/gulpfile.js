@@ -111,7 +111,7 @@ const options = {
     outdir : "./build/web",
     lintscripts : ['code/*.js','config/*.js','web/*.js','*.js','test/*.js' ],
     name : 'index',
-    alljs : [ 'webcomponents-lite.js', 'jquery.min.js', 'three.min.js', 'bootstrap.min.js', 'libbiswasm_nongpl_wasm.js', 'bislib.js', 'index_bundle.js'  ],
+    alljs : [ 'webcomponents-lite.js', 'jquery.min.js', 'three.min.js', 'd3.min.js', 'bootstrap.min.js', 'libbiswasm_nongpl_wasm.js', 'bislib.js', 'index_bundle.js'  ],
     allcss : [ 'bootstrap_dark_edited.css', 'index.css' ],
     webpackwatch : false,
     debug : true,
@@ -160,6 +160,7 @@ gulp.task('commonfiles', (done) => {
         gulp.src('./node_modules/biswebbrowser/dist/bislib.js').pipe(gulp.dest(options.outdir)),
         gulp.src('./node_modules/biswebbrowser/dist/libbiswasm_nongpl_wasm.js').pipe(gulp.dest(options.outdir)),
         gulp.src('./node_modules/biswebbrowser/dist/jquery.min.js').pipe(gulp.dest(options.outdir)),
+        gulp.src('./node_modules/biswebbrowser/dist/d3.min.js').pipe(gulp.dest(options.outdir)),
         gulp.src('./node_modules/biswebbrowser/dist/bootstrap.min.js').pipe(gulp.dest(options.outdir)),
         gulp.src('./node_modules/biswebbrowser/dist/three.min.js').pipe(gulp.dest(options.outdir)),
     ).on('end', () => {

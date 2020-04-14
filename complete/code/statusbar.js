@@ -10,7 +10,7 @@ const statusbartext=`
       <img src="images/bottomlogo.png" height="20px"/>
     </div>
     <div style="display: inline-block;margin-top:1px; padding-left:2px; padding-right:5px;margin-bottom:1px;height:10px;font-size:14px;float:right">
-      <p>This application is an example for Yale BENG 406b, Spring 2019.</p>
+      <p>This application is test example, Spring 2020.</p>
     </div>
   </nav>`;
 

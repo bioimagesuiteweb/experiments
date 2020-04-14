@@ -47,6 +47,7 @@ module.exports = {
     externals: {
         "jquery": "jQuery", // require("jquery") is external and available on the global var jQuery
         "three": "THREE",  // available on the global variable THREE
+        "d3": "d3",  // available on the global variable THREE
         "bislib": "window.bioimagesuiteweb", // available in window.bioimagesuiteweb
     },
     watchOptions: {

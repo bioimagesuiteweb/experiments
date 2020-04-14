@@ -6,5 +6,4 @@ require('form');
 require('main_application');
 require('statusbar');
 
-
-
+console.log("Cordova probably available (Running with protocol " + document.location.protocol + ")");
