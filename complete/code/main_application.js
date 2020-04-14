@@ -36,15 +36,10 @@ class CustomMainApplication extends  HTMLElement {
 
 	// Get the Managed Elements themselves
 	let menubar = document.querySelector(menubarid).getMenuBar();
-        console.log('formid',formid);
         let form=new formElement();
-
 
 	// Create File Menu
 	let fmenu=webutil.createTopMenuBarMenu("File",menubar);
-
-        console.log(form);
-        
         webfileutil.createFileMenuItem(fmenu,'Load Application State',
                                        (f) => {
                                            form.load(f);
@@ -94,7 +89,6 @@ class CustomMainApplication extends  HTMLElement {
             pwautils.addInstallButton(hmenu);
         }
 
-        console.log('Creating form');
         form.createGUI(formid);
     }
     

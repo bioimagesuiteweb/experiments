@@ -114,10 +114,8 @@ class CustomForm {
 
     createGUI(id) {
 
-        console.log('id=',id);
         let parent=$(id);
         let form=this.createForm();
-        console.log('parent=',parent,form);
         parent.append(form);
 
 	// Create GUI
