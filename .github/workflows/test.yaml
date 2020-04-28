@@ -18,11 +18,31 @@ jobs:
         git --version
         node --version
         cmake --version
+        cd C:\"Program Files"\Git\bin\
+        dir
+        bash.exe --version
+      shell: cmd
+    - name: NPM Install
+      run : |
+        npm install -g gulp mocha rimraf
       shell: cmd
     - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
-        c:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build\vcvars64
+        cd c:\"Program Files (x86)"
+        dir
+        cd "Microsoft Visual Studio"
+        dir
+        cd 2017
+        dir
+        cd BuildTools
+        dir
+        cd VC
+        dir
+        cd Auxiliary
+        dir
+        cd Build
+        dir
+        vcvars64.bat
         where nmake.exe
-        C:\"Program Files"\Git\bin\bash.exe --version
       shell: cmd
