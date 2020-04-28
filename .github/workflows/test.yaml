@@ -65,7 +65,7 @@ jobs:
         chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
     - name Failure
-      run :
+      run: |
         d:
         cd
         dir
