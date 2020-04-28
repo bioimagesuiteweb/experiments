@@ -85,7 +85,7 @@ jobs:
         d:
         cd
         dir
-        "C:\\Program Files (x86)\\Git\\bin\\sh.exe" d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
+        bash.exe d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
       shell: cmd
     - name : Test
       run : bash /d/tmp/bisweb/src/actions/hosted/dockeractiontest.sh /d/tmp 1 1000
