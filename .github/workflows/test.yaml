@@ -64,7 +64,7 @@ jobs:
         node config/createbuild.js
         chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
-    - name Failure
+    - name: Failure
       run: |
         d:
         cd
