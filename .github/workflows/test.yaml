@@ -11,4 +11,4 @@ jobs:
     - name: Global Prereqs
       run: |
         where git.exe
-        
+      shell: cmd
