@@ -70,6 +70,7 @@ jobs:
         choco install visualstudio2017-workload-vctools
       shell: cmd
     - name "Build"
+      run: |
         c:
         cd "\Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build
         dir
@@ -82,9 +83,9 @@ jobs:
         echo "-------------------------------------------------"
         bash d:\tmp\bisweb\src\compiletools\fullbuild.sh
         cd \tmp\bisweb\src
-        shell: cmd
+      shell: cmd
     - name : Test
-      run : bash d:\tmp\bisweb\src\actions\hosted\dockeractiontest.sh /d/tmp 1 1000
+      run : bash /d/tmp/bisweb/src/actions/hosted/dockeractiontest.sh /d/tmp 1 1000
       id: run    
       shell: bash
     - name: Results
