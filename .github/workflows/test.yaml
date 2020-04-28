@@ -69,7 +69,7 @@ jobs:
         d:
         cd
         dir
-        "C:\\Program Files (x86)\\Git\\bin\\sh.exe" d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
+        bash.exe d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
       shell: cmd
     - name: "VS 2017"
       run: |
