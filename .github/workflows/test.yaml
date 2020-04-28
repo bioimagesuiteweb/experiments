@@ -64,13 +64,6 @@ jobs:
         node config/createbuild.js
         chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
-    - name: Failure
-      run: |
-        d:
-        cd
-        dir
-        bash.exe d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
-      shell: cmd
     - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
