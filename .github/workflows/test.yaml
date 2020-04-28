@@ -28,28 +28,6 @@ jobs:
         pwd
         ls -lRt /d/tmp
       shell: bash
-    - name: "VS 2017"
-      run: |
-        choco install visualstudio2017buildtools
-        choco install visualstudio2017-workload-vctools
-        c:
-        cd "\Program Files (x86)"
-        dir
-        cd "Microsoft Visual Studio"
-        dir
-        cd 2017
-        dir
-        cd BuildTools
-        dir
-        cd VC
-        dir
-        cd Auxiliary
-        dir
-        cd Build
-        dir
-        vcvars64.bat
-        where nmake.exe
-      shell: cmd
     - name: Clone
       run: |
         mkdir -p /d/tmp/bisweb/src
@@ -84,21 +62,29 @@ jobs:
         cd /d/tmp/bisweb/src
         npm install -d
         node config/createbuild.js
+        chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
-    - name : Build
+    - name: "VS 2017"
       run: |
-        cd /d/tmp/bisweb/src/build
-        echo "Copying files"
-        chmod +x /d/tmp/bisweb/src/build/*.sh
-        chmod +x /d/tmp/bisweb/src/compiletools/*.sh
+        choco install visualstudio2017buildtools
+        choco install visualstudio2017-workload-vctools
+      shell: cmd
+    - name "Build"
+        c:
+        cd "\Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build
+        dir
+        vcvars64.bat
+        where nmakee.exe
+        d:
+        cd \tmp\bisweb\src\build
         echo "-------------------------------------------------"
         echo "Beginning build"
         echo "-------------------------------------------------"
-        bash /d/tmp/bisweb/src/compiletools/fullbuild.sh
-        cd /d/tmp/bisweb/src
-        shell: bash
+        bash d:\tmp\bisweb\src\compiletools\fullbuild.sh
+        cd \tmp\bisweb\src
+        shell: cmd
     - name : Test
-      run : bash /d/tmp/bisweb/src/actions/hosted/dockeractiontest.sh /d/tmp 1 1000
+      run : bash d:\tmp\bisweb\src\actions\hosted\dockeractiontest.sh /d/tmp 1 1000
       id: run    
       shell: bash
     - name: Results
