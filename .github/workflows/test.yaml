@@ -22,7 +22,7 @@ jobs:
     - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
-        C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\vcvars64.bat
+        c:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build\vcvars64
         where nmake.exe
-        "c:\Program Files\Git\bin\bash" --login
+        C:\"Program Files"\Git\bin\bash.exe --version
       shell: cmd
