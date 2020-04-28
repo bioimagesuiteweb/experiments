@@ -8,7 +8,7 @@ jobs:
         os: [ windows-latest]
     name: bisweb-test
     steps:
-    - name: Global Prereqs
+    - name: Environment Test
       run: |
         echo "----------------------------------------------------"
         echo "cmake = `which nmake` `cmake --version`"
@@ -24,17 +24,14 @@ jobs:
     - name: Temp Directory
       run: |
         mkdir /d/tmp
-        ls /d/tmp
-      shell: bash
-    - name: NPM Install
-      run : |
-        npm install -g mocha rimraf2
-        python -m pip install --upgrade pip setuptools
-        python -m pip install numpy nibabel
+        cd /d/tmp
+        pwd
+        ls -lRt /d/tmp
       shell: bash
     - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
+        choco install visualstudio2017-workload-vctools
         c:
         cd "\Program Files (x86)"
         dir
@@ -70,6 +67,12 @@ jobs:
         git clone https://github.com/bioimagesuiteweb/gplcppcode gpl
         cd gpl
         git pull
+      shell: bash
+    - name: Global Prereq
+      run : |
+        npm install -g mocha rimraf2
+        python -m pip install --upgrade pip setuptools
+        python -m pip install numpy nibabel
       shell: bash
     - name : Python Prereqs
       run: |
