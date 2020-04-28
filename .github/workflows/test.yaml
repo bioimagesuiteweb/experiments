@@ -64,6 +64,13 @@ jobs:
         node config/createbuild.js
         chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
+    - name Failure
+      run :
+        d:
+        cd
+        dir
+        "C:\Program Files (x86)\Git\bin\sh.exe" d:\tmp\bisweb\src\compiletools\fullbuild.sh
+      shell: cmd
     - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
@@ -72,18 +79,13 @@ jobs:
     - name: "Build"
       run: |
         c:
-        cd "\Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build
-        dir
-        vcvars64.bat
-        d:
-        cd \tmp\bisweb\src\build
         cd
         dir
-        echo "-------------------------------------------------"
-        echo "Beginning build"
-        echo "-------------------------------------------------"
-        bash d:\tmp\bisweb\src\compiletools\fullbuild.sh
-        cd \tmp\bisweb\src
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildToo        ls\VC\Auxiliary\Build\vcvarsall.bat" x64
+        d:
+        cd
+        dir
+        "C:\Program Files (x86)\Git\bin\sh.exe" d:\tmp\bisweb\src\compiletools\fullbuild.sh
       shell: cmd
     - name : Test
       run : bash /d/tmp/bisweb/src/actions/hosted/dockeractiontest.sh /d/tmp 1 1000
