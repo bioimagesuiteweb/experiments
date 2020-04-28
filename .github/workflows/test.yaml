@@ -17,17 +17,16 @@ jobs:
         echo "python = `which python` `python --version`"
         echo "node = `which node` `node --version`"
         echo "----------------------------------------------------"
-        cd $HOME
         pwd
-        dir
+        ls -la
       shell: bash
     - name: NPM Install
       run : |
-        choco install visualstudio2017buildtools  
-        npm install -g gulp mocha rimraf
+        npm install -g mocha rimraf
       shell: bash
     - name: "VS 2017"
       run: |
+        choco install visualstudio2017buildtools  
         cd c:\"Program Files (x86)"
         dir
         cd "Microsoft Visual Studio"
