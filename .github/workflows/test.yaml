@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  hosted_build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest]
+    name: bisweb-test
+    steps:
+    - name: Global Prereqs
+      run: |
+        where git.exe
+        
