@@ -19,7 +19,7 @@ jobs:
         node --version
         cmake --version
       shell: cmd
-    - name "VS 2017"
+    - name: "VS 2017"
       run: |
         choco install visualstudio2017buildtools
         C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\vcvars64.bat
