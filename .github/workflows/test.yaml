@@ -69,8 +69,8 @@ jobs:
         choco install visualstudio2017buildtools
         choco install visualstudio2017-workload-vctools
       shell: cmd
-    - name "Build"
-      run: |
+    - name: "Build"
+        run: |
         c:
         cd "\Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build
         dir
