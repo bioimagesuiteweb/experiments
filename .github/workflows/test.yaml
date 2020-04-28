@@ -74,7 +74,7 @@ jobs:
         c:
         cd
         dir
-        call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildToo        ls\\VC\\Auxiliary\\Build\\vcvarsall.bat" x64
+        call C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\\BuildTools\VC\Auxiliary\Build\vcvarsall.bat x64
         d:
         cd
         dir
