@@ -18,4 +18,11 @@ jobs:
         git --version
         node --version
         cmake --version
+        choco install visualstudio2017buildtools
+        "c:\Program Files\Git\bin\bash" --login
       shell: cmd
+    - name VS 2017
+      run : |
+         choco install visualstudio2017buildtools
+         echo %PATH%
+      shell : cmd
