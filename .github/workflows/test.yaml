@@ -75,9 +75,10 @@ jobs:
         cd "\Program Files (x86)"\"Microsoft Visual Studio"\2017\BuildTools\VC\Auxiliary\Build
         dir
         vcvars64.bat
-        where nmakee.exe
         d:
         cd \tmp\bisweb\src\build
+        cd
+        dir
         echo "-------------------------------------------------"
         echo "Beginning build"
         echo "-------------------------------------------------"
@@ -95,9 +96,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: logs
-        path: /d/tmp/bisweb/src/build/output/logs
+        path: d:/tmp/bisweb/src/build/output/logs
     - name: Store Libraries
       uses: actions/upload-artifact@v1
       with:
         name: libraries
-        path: /d/tmp/bisweb/src/build/output/libraries
+        path: d:/tmp/bisweb/src/build/output/libraries
