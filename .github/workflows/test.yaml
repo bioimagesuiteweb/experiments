@@ -20,15 +20,14 @@ jobs:
         cd $HOME
         pwd
         dir
-      shell: bash.exe
+      shell: bash
     - name: NPM Install
       run : |
         choco install visualstudio2017buildtools  
         npm install -g gulp mocha rimraf
-      shell: cmd
+      shell: bash
     - name: "VS 2017"
       run: |
-
         cd c:\"Program Files (x86)"
         dir
         cd "Microsoft Visual Studio"
