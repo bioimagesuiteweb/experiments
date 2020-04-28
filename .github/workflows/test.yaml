@@ -11,4 +11,11 @@ jobs:
     - name: Global Prereqs
       run: |
         where git.exe
+        where nmake.exe
+        where npm
+        echo %PATH%
+        python --version
+        git --version
+        node --version
+        cmake --version
       shell: cmd
