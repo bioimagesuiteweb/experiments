@@ -10,25 +10,25 @@ jobs:
     steps:
     - name: Global Prereqs
       run: |
-        where git.exe
-        where nmake.exe
-        where npm
-        echo %PATH%
-        python --version
-        git --version
-        node --version
-        cmake --version
-        cd C:\"Program Files"\Git\bin\
+        echo "----------------------------------------------------"
+        echo "cmake = `which nmake` `cmake --version`"
+        echo "nmake = `which nmake`"
+        echo "git = `which git` `git --version`"
+        echo "python = `which python` `python --version`"
+        echo "node = `which node` `node --version`"
+        echo "----------------------------------------------------"
+        cd $HOME
+        pwd
         dir
-        bash.exe --version
-      shell: cmd
+      shell: bash.exe
     - name: NPM Install
       run : |
+        choco install visualstudio2017buildtools  
         npm install -g gulp mocha rimraf
       shell: cmd
     - name: "VS 2017"
       run: |
-        choco install visualstudio2017buildtools
+
         cd c:\"Program Files (x86)"
         dir
         cd "Microsoft Visual Studio"
