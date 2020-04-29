@@ -8,11 +8,10 @@ jobs:
         os: [ windows-latest]
     name: bisweb-test
     steps:
-    - name: Environment Test
+    - name: Environment Setup
       run: |
         cp /c/hostedtoolcache/windows/Python/3.7.6/x64/python.exe /c/hostedtoolcache/windows/Python/3.7.6/x64/python3.exe
         echo "----------------------------------------------------"
-        echo "nmake = `which nmake`"
         echo "git = `which git` `git --version`"
         echo "python = `which python` `python --version`"
         echo "python = `which python3` `python3 --version`"
@@ -20,14 +19,12 @@ jobs:
         echo "----------------------------------------------------"
         pwd
       shell: bash
-    - name: Temp Directory
+    - name: Create Temp Directory
       run: |
         mkdir /d/tmp
         cd /d/tmp
-        pwd
-        ls -lRt /d/tmp
       shell: bash
-    - name: Clone
+    - name: Clone Source Code
       run: |
         mkdir -p /d/tmp/bisweb/src
         cd /d/tmp/bisweb
@@ -37,7 +34,7 @@ jobs:
         git pull
         cp npm-shrinkwrap-orig.json npm-shrinkwrap.json
       shell: bash
-    - name: Clone Plugin
+    - name: Clone GPL Plugin
       run: |
         cd /d/tmp/bisweb
         mkdir -p /d/tmp/bisweb/gpl
@@ -45,6 +42,11 @@ jobs:
         cd gpl
         git pull
       shell: bash
+    - name: Install VS 2017
+      run: |
+        choco install visualstudio2017buildtools
+        choco install visualstudio2017-workload-vctools
+      shell: cmd
     - name: Global Prereq
       run : |
         npm install -g mocha rimraf2
@@ -60,23 +62,18 @@ jobs:
       run: |
         cd /d/tmp/bisweb/src
         npm install -d
+      shell: bash
+    - name : Install Emscrpten
+      run: |
+        cd /d/tmp/bisweb/src
         node config/createbuild.js
         chmod +x /d/tmp/bisweb/src/compiletools/*.sh    
       shell: bash
-    - name: "VS 2017"
-      run: |
-        choco install visualstudio2017buildtools
-        choco install visualstudio2017-workload-vctools
-      shell: cmd
     - name: "Build"
       run: |
         c:
-        cd
-        dir
         call C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\\BuildTools\VC\Auxiliary\Build\vcvarsall.bat x64
         d:
-        cd
-        dir
         bash.exe d:\\tmp\\bisweb\\src\\compiletools\\fullbuild.sh
       shell: cmd
     - name : Test
