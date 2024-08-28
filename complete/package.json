@@ -27,7 +27,7 @@
         "gulp-zip": "4.2.0",
         "jsdoc": "3.5.5",
         "mocha": "5.2.0",
-        "webpack": "4.28.4",
+        "webpack": "5.94.0",
         "webpack-cli": "3.2.1"
     }
 }
